@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>Remote service</h1>
+
+    <div id="result"></div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            getAll();
+        });
+        function getAll(){
+            $.ajax({
+                url : 'all',
+                type: 'get',
+                success : function(data) {
+                    console.log(data);
+                    var result = "<ul>";
+                    for (i=0; i<data.length;i++) {
+                        result += "<li>" + JSON.stringify(data[i]) + "</li></br>"
+                    }
+                    result += "</ul>";
+                    $('#result').html(result);
+                }
+            });
+        }
+
+
+
+    </script>
+
+</body>
+</html>
